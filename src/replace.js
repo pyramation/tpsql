@@ -112,3 +112,15 @@ export const replace = (obj, variables) => {
   obj = getReplaced(obj, variables);
   return obj;
 };
+
+export const getAllArgsFn = (obj, variables) => {
+  return Object.keys(
+    Object.keys(obj).reduce((m, k) => {
+      const { replaces } = obj[k];
+      replaces.forEach(({ replace }) => {
+        m[replace] = true;
+      });
+      return m;
+    }, {})
+  );
+};

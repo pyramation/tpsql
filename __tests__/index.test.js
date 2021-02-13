@@ -1,9 +1,9 @@
-import { readdir, parseFiles } from '../src';
+import { readdir, parseFiles, getAllArgs } from '../src';
 import path from 'path';
 import { tmpdir } from 'os';
 import { randomBytes } from 'crypto';
 import mkdirp from 'mkdirp';
-import { replace, write, templatize } from '../src';
+import { replace, write, templatize, getAllArgsFn, Templatizer } from '../src';
 
 const dir = randomBytes(20).toString('hex');
 
@@ -21,5 +21,22 @@ it('replace', () => {
     public_schema: 'the_public_schema'
   });
   const out = readdir(packagesDir);
-  console.log(out);
+  // console.log(out);
+});
+
+it('replace', () => {
+  const files = readdir(fixtures);
+  let obj = parseFiles(files);
+  obj = getAllArgsFn(obj);
+
+  console.log(obj);
+});
+
+it('Templatizer', () => {
+  const client = new Templatizer(fixtures);
+  expect(client.variables()).toMatchSnapshot();
+  client.write(packagesDir, {
+    private_schema: 'my-private_schema',
+    public_schema: 'the_public_schema'
+  });
 });

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Templatizer 1`] = `
+Array [
+  "private_schema",
+  "public_schema",
+]
+`;

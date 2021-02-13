@@ -1,6 +1,6 @@
 {
   "name": "tpsql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Template PostgreSQL",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/pyramation/tpsql#readme",
